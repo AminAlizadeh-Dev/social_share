@@ -221,6 +221,32 @@ class SocialSharePlugin:FlutterPlugin, MethodCallHandler, ActivityAware {
                 result.success("error")
             }
         }
+        else if (call.method == "shareBale") {
+            val content: String? = call.argument("content")
+            val baleIntent = Intent(Intent.ACTION_SEND)
+            baleIntent.type = "text/plain"
+            baleIntent.setPackage("ir.nasim")
+            baleIntent.putExtra(Intent.EXTRA_TEXT, content)
+            try {
+                activity!!.startActivity(baleIntent)
+                result.success("success")
+            } catch (ex: ActivityNotFoundException) {
+                result.success("error")
+            }
+        }
+        else if (call.method == "shareEitaa") {
+            val content: String? = call.argument("content")
+            val eitaaIntent = Intent(Intent.ACTION_SEND)
+            eitaaIntent.type = "text/plain"
+            eitaaIntent.setPackage("ir.eitaa.messenger")
+            eitaaIntent.putExtra(Intent.EXTRA_TEXT, content)
+            try {
+                activity!!.startActivity(eitaaIntent)
+                result.success("success")
+            } catch (ex: ActivityNotFoundException) {
+                result.success("error")
+            }
+        }
         else if (call.method == "checkInstalledApps") {
             //check if the apps exists
             //creating a mutable map of apps
