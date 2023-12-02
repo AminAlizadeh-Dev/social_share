@@ -192,6 +192,16 @@ class SocialShare {
     final Map<String, dynamic> args = <String, dynamic>{"content": content};
     final String? version = await _channel.invokeMethod('shareTelegram', args);
     return version;
+  }  static Future<String?> shareBale(String content) async {
+    final Map<String, dynamic> args = <String, dynamic>{"content": content};
+    final String? version = await _channel.invokeMethod('shareBale', args);
+    return version;
+  }
+
+  static Future<String?> shareEitaa(String content) async {
+    final Map<String, dynamic> args = <String, dynamic>{"content": content};
+    final String? version = await _channel.invokeMethod('shareEitaa', args);
+    return version;
   }
 
 // static Future<String> shareSlack() async {
